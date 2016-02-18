@@ -4,6 +4,8 @@ import java.util.concurrent.atomic.AtomicLong;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import java.util.*;
+
 
 @RestController
 public class GreetingController {
@@ -16,10 +18,7 @@ public class GreetingController {
     	JSONToJava jt= new JSONToJava();
     	String out = "";
 
-    	if(section.equals("0")){
-    		out = out+jt.getSortedPrice()+"\r\r"+jt.getSippInfo()+"\r\r"+jt.getSupplierTopType()+"\r\r"+jt.getOrderedScores()+"\r\r";
-    	}
-    	else if(section.equals("1")){
+    	if(section.equals("1")){
     		out = out+jt.getSortedPrice();
     	}
     	else if(section.equals("2")){
@@ -30,6 +29,9 @@ public class GreetingController {
     	}
     	else if(section.equals("4")){
     		out = out+jt.getOrderedScores();
+    	}
+    	else{
+    		out = out+jt.getSortedPrice()+"\r\r"+jt.getSippInfo()+"\r\r"+jt.getSupplierTopType()+"\r\r"+jt.getOrderedScores()+"\r\r";	
     	}
         return out;
     }
